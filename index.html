@@ -5,7 +5,8 @@ title: Home
 
 <div class="booklet-list">
   {% for booklet in site.booklets %}
-  {% assign booklet_chapters = site.chapters | where: "booklet", booklet.slug %}
+  {% unless booklet.chapter_number %}
+  {% assign booklet_chapters = site.booklets | where: "booklet", booklet.slug %}
   <div class="booklet-item">
     <h2><a href="{{ booklet.url | relative_url }}">{{ booklet.title }}</a></h2>
     {% if booklet.description %}<p class="description">{{ booklet.description }}</p>{% endif %}
@@ -18,6 +19,7 @@ title: Home
     
     <a href="{{ booklet.url | relative_url }}" class="read-more">View Booklet →</a>
   </div>
+  {% endunless %}
   {% endfor %}
 </div>
 

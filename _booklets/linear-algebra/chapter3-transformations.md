@@ -1,4 +1,5 @@
 ---
+layout: chapter
 booklet: "linear-algebra"
 booklet_title: "Introduction to Linear Algebra"
 booklet_subtitle: "A Comprehensive Guide for Students"
@@ -7,7 +8,6 @@ chapter_number: 3
 title: "Linear Transformations"
 subtitle: "Functions Between Vector Spaces"
 author: "Dr. Jane Smith"
-tex_source: "tex-sources/linear-algebra/chapter3-transformations.tex"
 ---
 
 # Linear Transformations

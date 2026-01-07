@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{% assign booklet_chapters = site.chapters | where: "booklet", page.slug | sort: "chapter_number" %}
+{% assign booklet_chapters = site.booklets | where: "booklet", page.slug | sort: "chapter_number" %}
 
 <article class="booklet-overview">
   <header class="booklet-header">

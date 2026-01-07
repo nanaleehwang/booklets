@@ -1,4 +1,5 @@
 ---
+layout: chapter
 booklet: "linear-algebra"
 booklet_title: "Introduction to Linear Algebra"
 booklet_subtitle: "A Comprehensive Guide for Students"
@@ -7,7 +8,6 @@ chapter_number: 1
 title: "Vectors and Vector Spaces"
 subtitle: "Foundation of Linear Algebra"
 author: "Dr. Jane Smith"
-tex_source: "tex-sources/linear-algebra/chapter1-vectors.tex"
 ---
 
 # Introduction to Vectors

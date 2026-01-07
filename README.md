@@ -1,4 +1,4 @@
-# Booklet Visualizer
+# Nana's Booklets
 
 A Jekyll-based booklet visualizer for GitHub Pages that organizes academic content into structured booklets with chapters and table of contents.
 
@@ -14,24 +14,24 @@ A Jekyll-based booklet visualizer for GitHub Pages that organizes academic conte
 
 ```
 booklets/
-├── _booklets/          # Markdown booklets
-│   ├── linear-algebra.md
-│   └── calculus.md
-├── tex-sources/        # Original LaTeX files (optional)
-│   ├── linear-algebra/
-│   │   ├── chapter1-vectors.tex
-│   │   └── chapter2-matrices.tex
-│   └── calculus/
-│       └── chapter1-limits.tex
-├── _layouts/           # Jekyll templates
-├── assets/css/         # Stylesheets
-└── _config.yml         # Jekyll configuration
+├── _booklets/             # All booklet and chapter files in one collection
+│   ├── calculus.md               # Main booklet file
+│   ├── calculus/                 # Calculus chapters
+│   │   ├── chapter1-limits.md
+│   │   └── chapter2-derivatives.md
+│   ├── linear-algebra.md         # Main booklet file
+│   └── linear-algebra/           # Linear algebra chapters
+│       ├── chapter1-vectors.md
+│       ├── chapter2-matrices.md
+│       └── chapter3-transformations.md
+├── _layouts/              # Jekyll templates
+├── assets/css/           # Stylesheets
+└── _config.yml           # Jekyll configuration
 ```
 
 ## Adding New Booklets
 
-1. Create a new file in `_booklets/` directory
-2. Use the following front matter structure:
+1. Create a new main booklet file in `_booklets/` directory (e.g., `physics.md`) with this front matter:
 
 ```yaml
 ---
@@ -40,28 +40,28 @@ subtitle: "Optional subtitle"
 author: "Author Name"
 description: "Brief description of the booklet"
 date: 2024-01-01
-chapters:
-  - title: "Chapter 1 Title"
-    content: |
-      Your chapter content in Markdown format.
-      
-      ## Section Headers
-      Content here...
-      
-  - title: "Chapter 2 Title"
-    content: |
-      More content...
+slug: "subject-name"
 ---
 ```
 
-## LaTeX Integration
+2. Create a subdirectory for the booklet's chapters (e.g., `_booklets/physics/`)
 
-The `tex-sources/` directory is provided for organizing original LaTeX files that correspond to your booklets. While not required for the Jekyll site to function, it helps maintain the source files for your mathematical content.
+3. Add chapter files in the booklet's subdirectory with this front matter:
 
-To convert LaTeX to Markdown:
-1. Place your `.tex` files in appropriate directories under `tex-sources/`
-2. Convert mathematical expressions to MathJax format
-3. Update the corresponding booklet file in `_booklets/`
+```yaml
+---
+layout: chapter
+booklet: "subject-name"
+booklet_title: "Your Booklet Title"
+booklet_subtitle: "Optional subtitle"
+booklet_author: "Author Name"
+chapter_number: 1
+title: "Chapter Title"
+subtitle: "Chapter subtitle"
+author: "Author Name"
+---
+```
+
 
 ## Local Development
 

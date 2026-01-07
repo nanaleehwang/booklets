@@ -1,4 +1,5 @@
 ---
+layout: chapter
 booklet: "calculus"
 booklet_title: "Calculus Fundamentals"
 booklet_subtitle: "Limits, Derivatives, and Integrals"
@@ -7,7 +8,6 @@ chapter_number: 2
 title: "Derivatives and Differentiation"
 subtitle: "Rates of Change"
 author: "Prof. Michael Johnson"
-tex_source: "tex-sources/calculus/chapter2-derivatives.tex"
 ---
 
 # The Derivative

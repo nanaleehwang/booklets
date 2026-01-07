@@ -5,6 +5,7 @@
 :root {
   --yellow: #FDD835;
   --light-pink: #FFB6C1;
+  --strong-pink: #FF69B4;
   --charcoal: #2C1810;
   --white: #FFFFFF;
   --brutal-shadow: 8px 8px 0px;
@@ -21,11 +22,12 @@
 
 /* BODY */
 body {
-  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 2rem;
   background: var(--light-pink);
   color: var(--charcoal);
-  font-weight: 700;
-  line-height: 1.4;
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1.6;
 }
 
 /* CONTAINER */
@@ -104,6 +106,7 @@ main {
   font-size: 1rem;
   line-height: 1.4;
   margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 /* CHAPTER LIST */
@@ -176,7 +179,7 @@ main {
 .start-button {
   display: inline-block;
   padding: 1rem 2rem;
-  background: var(--yellow);
+  background: var(--strong-pink);
   color: var(--charcoal);
   text-decoration: none;
   font-weight: 900;
@@ -188,6 +191,15 @@ main {
 .start-button:hover {
   background: var(--charcoal);
   color: var(--white);
+}
+
+/* BOOKLET CONTENT */
+.booklet-content {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--white);
+  border: var(--harsh-border) var(--charcoal);
+  color: var(--charcoal);
 }
 
 /* HOME PAGE BOOKLET LIST */
@@ -296,6 +308,13 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  height: 60px;
 }
 
 .booklet-info {
@@ -307,29 +326,42 @@ main {
 .booklet-info a {
   color: var(--yellow);
   text-decoration: none;
+  padding: 0.25rem;
 }
 
 .booklet-info a:hover {
   color: var(--white);
   background: var(--light-pink);
-  padding: 0.25rem;
 }
 
 .fullscreen-exit {
   background: var(--yellow);
   color: var(--charcoal);
-  border: 2px solid var(--yellow);
-  padding: 0.5rem 1rem;
+  border: 2px solid var(--charcoal);
+  box-shadow: 4px 4px 0px var(--charcoal);
+  padding: 0;
   text-decoration: none;
   font-weight: 900;
   text-transform: uppercase;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.9rem;
+  display: inline-block;
+  transition: all 0.1s ease;
+}
+
+.fullscreen-exit-text {
+  display: inline-block;
+  padding: 0.5rem 1rem;
 }
 
 .fullscreen-exit:hover {
-  background: var(--light-pink);
-  color: var(--charcoal);
+  background: var(--charcoal);
+  color: var(--white);
+}
+
+.fullscreen-exit:hover .fullscreen-exit-text {
+  background: transparent;
+  color: var(--white);
 }
 
 .chapter-viewer {
@@ -341,10 +373,15 @@ main {
 
 .sidebar-toc {
   width: 280px;
-  background: var(--white);
+  background: var(--light-pink);
   border-right: var(--harsh-border) var(--charcoal);
   padding: 1.5rem;
   overflow-y: auto;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  height: calc(100vh - 60px);
+  z-index: 10;
 }
 
 .toc-header {
@@ -388,15 +425,26 @@ main {
 }
 
 .toc-chapters li.active {
-  background: var(--light-pink);
+  background: var(--strong-pink);
 }
 
 .toc-chapters li.active a {
   color: var(--charcoal);
 }
 
+.toc-chapters .chapter-number,
+.toc-chapters .chapter-title {
+  padding: 0.25rem 0.5rem;
+}
+
 .toc-chapters a:hover {
   background: var(--charcoal);
+  color: var(--white);
+}
+
+.toc-chapters a:hover .chapter-number,
+.toc-chapters a:hover .chapter-title {
+  background: transparent;
   color: var(--white);
 }
 
@@ -413,11 +461,6 @@ main {
   font-size: 0.9rem;
 }
 
-.toc-chapters a:hover {
-  background: var(--light-pink);
-  color: var(--charcoal);
-}
-
 .toc-chapters .chapter-number {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 900;
@@ -426,9 +469,11 @@ main {
 
 .fullscreen-content {
   flex: 1;
-  background: var(--light-pink);
+  background: var(--white);
   padding: 2rem;
   overflow-y: auto;
+  margin-left: 280px;
+  padding-top: calc(2rem + 60px);
 }
 
 .chapter-header {
@@ -549,29 +594,36 @@ main {
 }
 
 .chapter-navigation {
-  padding: 1.5rem;
-  margin-top: 2rem;
+  display: block;
+  padding: 0;
+  margin-top: 3rem;
+  background: none;
+  border: none;
 }
 
 .nav-buttons {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .nav-button {
   display: block;
-  padding: 1rem;
-  background: var(--white);
+  padding: 0.75rem;
+  background: var(--yellow);
   color: var(--charcoal);
-  border: 2px solid var(--charcoal);
+  border: var(--harsh-border) var(--charcoal);
   text-decoration: none;
   font-weight: 900;
   text-transform: uppercase;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.9rem;
+  font-size: 4rem;
   text-align: center;
   flex: 1;
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .nav-button:hover:not(.disabled) {
@@ -579,20 +631,31 @@ main {
   color: var(--white);
 }
 
+
+
 .nav-button.disabled {
-  opacity: 0.3;
+  opacity: 0.4;
   pointer-events: none;
+  background: var(--light-pink);
+  color: var(--charcoal);
+  box-shadow: 4px 4px 0px var(--charcoal);
 }
 
 .nav-label {
   display: block;
-  font-size: 0.8rem;
-  margin-bottom: 0.25rem;
+  font-size: 1.2rem;
+  margin: 0.5rem 0 0 0;
+  padding: 0;
+  line-height: 1;
 }
 
 .nav-title {
-  font-size: 0.9rem;
+  display: block;
+  font-size: 1.5rem;
   text-transform: none;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
 }
 
 /* FOOTER */
@@ -602,6 +665,7 @@ footer {
   text-align: center;
   margin-top: 2rem;
   border-top: var(--harsh-border) var(--charcoal);
+  display: none;
 }
 
 footer p {

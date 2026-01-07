@@ -1,4 +1,4 @@
-title: Booklet Visualizer
+title: Nana's Booklets
 description: A collection of academic booklets organized by topics
 baseurl: "/booklets"
 url: "https://yourusername.github.io"
@@ -19,10 +19,7 @@ kramdown:
 collections:
   booklets:
     output: true
-    permalink: /:collection/:name/
-  chapters:
-    output: true
-    permalink: /:collection/:path/
+    permalink: /booklets/:path/
 
 defaults:
   - scope:
@@ -30,11 +27,6 @@ defaults:
       type: "booklets"
     values:
       layout: "booklet"
-  - scope:
-      path: ""
-      type: "chapters"
-    values:
-      layout: "chapter"
   - scope:
       path: ""
       type: "posts"
@@ -45,4 +37,6 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - SETUP.md
+  - STRUCTURE.md
   - vendor/

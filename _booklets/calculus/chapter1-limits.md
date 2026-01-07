@@ -1,4 +1,5 @@
 ---
+layout: chapter
 booklet: "calculus"
 booklet_title: "Calculus Fundamentals"
 booklet_subtitle: "Limits, Derivatives, and Integrals"
@@ -7,7 +8,6 @@ chapter_number: 1
 title: "Limits and Continuity"
 subtitle: "The Foundation of Calculus"
 author: "Prof. Michael Johnson"
-tex_source: "tex-sources/calculus/chapter1-limits.tex"
 ---
 
 # Understanding Limits

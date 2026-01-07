@@ -1,4 +1,5 @@
 ---
+layout: chapter
 booklet: "linear-algebra"
 booklet_title: "Introduction to Linear Algebra"
 booklet_subtitle: "A Comprehensive Guide for Students"
@@ -7,7 +8,6 @@ chapter_number: 2
 title: "Matrices and Matrix Operations"
 subtitle: "Linear Transformations in Action"
 author: "Dr. Jane Smith"
-tex_source: "tex-sources/linear-algebra/chapter2-matrices.tex"
 ---
 
 # Introduction to Matrices

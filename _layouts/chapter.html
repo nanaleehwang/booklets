@@ -2,7 +2,7 @@
 layout: fullscreen
 ---
 
-{% assign booklet_chapters = site.chapters | where: "booklet", page.booklet | sort: "chapter_number" %}
+{% assign booklet_chapters = site.booklets | where: "booklet", page.booklet | sort: "chapter_number" %}
 
 <div class="fullscreen-container">
   <header class="fullscreen-header">
@@ -10,7 +10,9 @@ layout: fullscreen
       <a href="{{ '/' | relative_url }}">← Home</a> |
       <a href="{{ '/booklets/' | append: page.booklet | relative_url }}">{{ page.booklet_title }}</a>
     </div>
-    <a href="{{ '/booklets/' | append: page.booklet | relative_url }}" class="fullscreen-exit">Exit Reader</a>
+    <a href="{{ '/booklets/' | append: page.booklet | relative_url }}" class="fullscreen-exit">
+      <span class="fullscreen-exit-text">Exit Reader</span>
+    </a>
   </header>
 
   <div class="chapter-viewer">
