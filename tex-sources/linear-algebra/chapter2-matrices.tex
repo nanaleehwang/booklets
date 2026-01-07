@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\title{Chapter 2: Matrices and Matrix Operations}
+\author{Dr. Jane Smith}
+
+\begin{document}
+\maketitle
+
+\section{Introduction to Matrices}
+
+A matrix is a rectangular array of numbers arranged in rows and columns. Matrices are fundamental tools in linear algebra for representing and manipulating linear transformations.
+
+\subsection{Matrix Notation}
+
+An $m \times n$ matrix $A$ has $m$ rows and $n$ columns:
+
+\[A = \begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}\]
+
+\subsection{Matrix Operations}
+
+\subsubsection{Addition}
+Two matrices of the same size can be added element-wise:
+$(A + B)_{ij} = a_{ij} + b_{ij}$
+
+\subsubsection{Multiplication}
+Matrix multiplication is defined when the number of columns in the first matrix equals the number of rows in the second matrix:
+$(AB)_{ij} = \sum_{k=1}^{n} a_{ik}b_{kj}$
+
+\subsection{Special Matrices}
+
+\begin{itemize}
+\item \textbf{Identity Matrix}: $I_n$ has 1's on the diagonal and 0's elsewhere
+\item \textbf{Zero Matrix}: All elements are zero
+\item \textbf{Transpose}: $A^T$ where $(A^T)_{ij} = a_{ji}$
+\end{itemize}
+
+\end{document}

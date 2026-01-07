@@ -1,0 +1,48 @@
+title: Booklet Visualizer
+description: A collection of academic booklets organized by topics
+baseurl: "/booklets"
+url: "https://yourusername.github.io"
+
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:year/:month/:day/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+collections:
+  booklets:
+    output: true
+    permalink: /:collection/:name/
+  chapters:
+    output: true
+    permalink: /:collection/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "booklets"
+    values:
+      layout: "booklet"
+  - scope:
+      path: ""
+      type: "chapters"
+    values:
+      layout: "chapter"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor/

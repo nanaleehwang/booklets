@@ -1,0 +1,28 @@
+---
+layout: default
+title: Home
+---
+
+<div class="booklet-list">
+  {% for booklet in site.booklets %}
+  {% assign booklet_chapters = site.chapters | where: "booklet", booklet.slug %}
+  <div class="booklet-item">
+    <h2><a href="{{ booklet.url | relative_url }}">{{ booklet.title }}</a></h2>
+    {% if booklet.description %}<p class="description">{{ booklet.description }}</p>{% endif %}
+    
+    <div class="meta">
+      {% if booklet.author %}<span class="author">By {{ booklet.author }}</span>{% endif %}
+      {% if booklet.date %}<span class="date">{{ booklet.date | date: "%B %Y" }}</span>{% endif %}
+      <span class="chapters">{{ booklet_chapters.size }} Chapters</span>
+    </div>
+    
+    <a href="{{ booklet.url | relative_url }}" class="read-more">View Booklet →</a>
+  </div>
+  {% endfor %}
+</div>
+
+{% if site.booklets.size == 0 %}
+<div class="no-chapters">
+  <p>No booklets available yet. Check back soon!</p>
+</div>
+{% endif %}

@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\title{Chapter 1: Limits and Continuity}
+\author{Prof. Michael Johnson}
+
+\begin{document}
+\maketitle
+
+\section{Understanding Limits}
+
+The concept of a limit is fundamental to calculus and mathematical analysis.
+
+\subsection{Informal Definition}
+We say that $\lim_{x \to a} f(x) = L$ if $f(x)$ gets arbitrarily close to $L$ as $x$ approaches $a$.
+
+\subsection{Formal Definition (Epsilon-Delta)}
+For every $\varepsilon > 0$, there exists a $\delta > 0$ such that:
+\[0 < |x - a| < \delta \implies |f(x) - L| < \varepsilon\]
+
+\subsection{Important Theorems}
+\begin{itemize}
+\item \textbf{Squeeze Theorem}: If $g(x) \leq f(x) \leq h(x)$ and $\lim_{x \to a} g(x) = \lim_{x \to a} h(x) = L$, then $\lim_{x \to a} f(x) = L$
+\item \textbf{Continuity}: A function is continuous at $x = a$ if $\lim_{x \to a} f(x) = f(a)$
+\end{itemize}
+
+\end{document}

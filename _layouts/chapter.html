@@ -1,0 +1,100 @@
+---
+layout: fullscreen
+---
+
+{% assign booklet_chapters = site.chapters | where: "booklet", page.booklet | sort: "chapter_number" %}
+
+<div class="fullscreen-container">
+  <header class="fullscreen-header">
+    <div class="booklet-info">
+      <a href="{{ '/' | relative_url }}">← Home</a> |
+      <a href="{{ '/booklets/' | append: page.booklet | relative_url }}">{{ page.booklet_title }}</a>
+    </div>
+    <a href="{{ '/booklets/' | append: page.booklet | relative_url }}" class="fullscreen-exit">Exit Reader</a>
+  </header>
+
+  <div class="chapter-viewer">
+    <nav class="sidebar-toc">
+      <div class="toc-header">
+        <h2>{{ page.booklet_title }}</h2>
+        {% if page.booklet_subtitle %}<p class="booklet-subtitle">{{ page.booklet_subtitle }}</p>{% endif %}
+        {% if page.booklet_author %}<p class="booklet-author">{{ page.booklet_author }}</p>{% endif %}
+      </div>
+      
+      <div class="toc-chapters">
+        <h3>Chapters</h3>
+        <ul>
+          {% for chapter in booklet_chapters %}
+          <li class="{% if chapter.url == page.url %}active{% endif %}">
+            <a href="{{ chapter.url | relative_url }}">
+              <span class="chapter-number">{{ chapter.chapter_number }}.</span>
+              <span class="chapter-title">{{ chapter.title }}</span>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </nav>
+
+    <main class="fullscreen-content">
+      <article class="chapter">
+        <header class="chapter-header">
+          <span class="chapter-number">Chapter {{ page.chapter_number }}</span>
+          <h1>{{ page.title }}</h1>
+          {% if page.subtitle %}<p class="subtitle">{{ page.subtitle }}</p>{% endif %}
+          {% if page.author %}<p class="author">{{ page.author }}</p>{% endif %}
+        </header>
+
+        <div class="chapter-body">
+          {{ content }}
+        </div>
+
+        <footer class="chapter-navigation">
+          {% assign prev_chapter = nil %}
+          {% assign next_chapter = nil %}
+          
+          {% for chapter in booklet_chapters %}
+            {% if chapter.chapter_number == page.chapter_number %}
+              {% assign current_index = forloop.index0 %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+          
+          {% if current_index > 0 %}
+            {% assign prev_index = current_index | minus: 1 %}
+            {% assign prev_chapter = booklet_chapters[prev_index] %}
+          {% endif %}
+          
+          {% assign next_index = current_index | plus: 1 %}
+          {% if next_index < booklet_chapters.size %}
+            {% assign next_chapter = booklet_chapters[next_index] %}
+          {% endif %}
+
+          <div class="nav-buttons">
+            {% if prev_chapter %}
+            <a href="{{ prev_chapter.url | relative_url }}" class="nav-button prev">
+              <span class="nav-label">← Previous</span>
+              <span class="nav-title">{{ prev_chapter.title }}</span>
+            </a>
+            {% else %}
+            <span class="nav-button disabled">
+              <span class="nav-label">← Previous</span>
+            </span>
+            {% endif %}
+            
+            {% if next_chapter %}
+            <a href="{{ next_chapter.url | relative_url }}" class="nav-button next">
+              <span class="nav-label">Next →</span>
+              <span class="nav-title">{{ next_chapter.title }}</span>
+            </a>
+            {% else %}
+            <span class="nav-button disabled">
+              <span class="nav-label">Next →</span>
+            </span>
+            {% endif %}
+          </div>
+        </footer>
+      </article>
+    </main>
+  </div>
+</div>

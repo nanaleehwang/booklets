@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+{% assign booklet_chapters = site.chapters | where: "booklet", page.slug | sort: "chapter_number" %}
+
+<article class="booklet-overview">
+  <header class="booklet-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.subtitle %}<p class="subtitle">{{ page.subtitle }}</p>{% endif %}
+    {% if page.author %}<p class="author">by {{ page.author }}</p>{% endif %}
+    {% if page.date %}<p class="date">{{ page.date | date: "%B %d, %Y" }}</p>{% endif %}
+    {% if page.description %}<p class="description">{{ page.description }}</p>{% endif %}
+  </header>
+
+  {% if booklet_chapters.size > 0 %}
+  <nav class="chapter-list">
+    <h2>Chapters</h2>
+    <ol>
+      {% for chapter in booklet_chapters %}
+      <li class="chapter-item">
+        <a href="{{ chapter.url | relative_url }}" class="chapter-link">
+          <span class="chapter-number">{{ chapter.chapter_number }}.</span>
+          <span class="chapter-title">{{ chapter.title }}</span>
+          {% if chapter.subtitle %}<span class="chapter-subtitle">{{ chapter.subtitle }}</span>{% endif %}
+        </a>
+        {% if chapter.description %}
+        <p class="chapter-description">{{ chapter.description }}</p>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+    
+    {% if booklet_chapters.size > 0 %}
+    <div class="start-reading">
+      <a href="{{ booklet_chapters[0].url | relative_url }}" class="start-button">
+        Start Reading →
+      </a>
+    </div>
+    {% endif %}
+  </nav>
+  {% else %}
+  <div class="no-chapters">
+    <p>No chapters available for this booklet yet.</p>
+  </div>
+  {% endif %}
+
+  {% if content and content != empty %}
+  <div class="booklet-content">
+    {{ content }}
+  </div>
+  {% endif %}
+</article>
