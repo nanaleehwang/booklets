@@ -315,6 +315,11 @@ main {
   right: 0;
   z-index: 20;
   height: 60px;
+  transition: transform 0.3s ease;
+}
+
+.fullscreen-header.header-hidden {
+  transform: translateY(-100%);
 }
 
 .booklet-info {
@@ -382,6 +387,12 @@ main {
   left: 0;
   height: calc(100vh - 60px);
   z-index: 10;
+  transition: top 0.3s ease, height 0.3s ease;
+}
+
+.fullscreen-container.header-hidden .sidebar-toc {
+  top: 0;
+  height: 100vh;
 }
 
 .toc-header {
@@ -474,6 +485,11 @@ main {
   overflow-y: auto;
   margin-left: 280px;
   padding-top: calc(2rem + 60px);
+  transition: padding-top 0.3s ease;
+}
+
+.fullscreen-container.header-hidden .fullscreen-content {
+  padding-top: 2rem;
 }
 
 .chapter-header {
