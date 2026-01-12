@@ -1,7 +1,7 @@
 title: Nana's Booklets
 description: A collection of academic booklets organized by topics
 baseurl: "/booklets"
-url: "https://yourusername.github.io"
+url: "https://nanaleehwang.github.io/booklets"
 
 markdown: kramdown
 highlighter: rouge
